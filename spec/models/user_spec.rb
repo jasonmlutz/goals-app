@@ -85,7 +85,7 @@ describe User do
 
   describe 'User::find_by_credentials' do
     before(:all) do
-      @new_user = User.new(email: 'kaylee@fakesite.com', password: 'good_password')
+      @new_user = User.new(email: 'jason@fakesite.com', password: 'good_password')
       @new_user.save
     end
 
@@ -94,15 +94,15 @@ describe User do
     end
 
     it 'finds the user given correct credentials' do
-      expect(User.find_by_credentials("kaylee@fakesite.com", "good_password")).to eq(@new_user)
+      expect(User.find_by_credentials("jason@fakesite.com", "good_password")).to eq(@new_user)
     end
 
     it 'returns nil if no such email exists in the db' do
-      expect(User.find_by_credentials("KAYLEE@fakesite.com", "good_password")).to be_nil
+      expect(User.find_by_credentials("JASON@fakesite.com", "good_password")).to be_nil
     end
 
     it 'returns nil if email exists and password is incorrect' do
-      expect(User.find_by_credentials("kaylee@fakesite.com", "incorrect_password")).to be_nil
+      expect(User.find_by_credentials("jason@fakesite.com", "incorrect_password")).to be_nil
     end
   end
 end
