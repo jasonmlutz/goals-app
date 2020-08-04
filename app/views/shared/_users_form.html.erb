@@ -1,0 +1,21 @@
+<% action_url = ( source == :session ) ? session_url : users_url %>
+<% message = ( source == :session) ? 'Sign in' : 'Register' %>
+
+<form action="<%= action_url %>" method="post" >
+  <%= auth_token %>
+  <% if :action == :edit %>
+    <input type="hidden" name="_method" value="patch">
+  <% end %>
+
+  <label for="email">Email</label>
+  <input type="text" name="user[email]" id="email">
+
+  <br><br>
+
+  <label for="password">Password</label>
+  <input type="password" name="user[password]" id="password">
+
+  <br><br>
+
+  <input type="submit" value="<%= message %>">
+</form>

@@ -9,6 +9,31 @@ RSpec.describe UsersController, type: :controller do
       end
     end
 
+    describe "GET #index" do
+      it "renders the index template" do
+        get :index, {}
+        expect(response).to render_template("index")
+        expect(response).to have_http_status(200)
+      end
+    end
+
+    describe "GET #show" do
+      context "with valid user id" do
+        it 'renders the show template' do
+          user = User.create(email: 'jason@fakesite.com', password: 'good_password')
+          get :show, params: { id: user.id }
+          expect(response).to render_template('show')
+        end
+      end
+
+      context "with invalid user id" do
+        it "renders the new template" do
+          get :show, params: { id: -1 }
+          expect(response).to render_template('new')
+        end
+      end
+    end
+
     describe "POST #create" do
       context "with invalid params" do
         it "validates the presence of the user's email" do
