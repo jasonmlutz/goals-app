@@ -1,3 +1,6 @@
 <h2>GoalsApp: Register</h2>
 
 <%= render 'shared/users_form', source: :users, action: :new %>
+<br><br>
+Already have an account?
+<%= button_to 'Sign in', new_session_url, method: :get %>
