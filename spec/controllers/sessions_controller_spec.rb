@@ -32,4 +32,12 @@ RSpec.describe SessionsController, type: :controller do
       end
     end
   end
+
+  describe 'DELETE destroy' do
+    it "renders new session with no errors" do
+      delete :destroy, {}
+      expect(response).to render_template :new
+      expect(flash[:errors]).to be_nil
+    end
+  end
 end
